@@ -1,0 +1,231 @@
+/* ===== RESET BÁSICO ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: url("caballospng/fondo.jpg") center / cover fixed;
+    color: #fff;
+}
+
+/* ===== DASHBOARD CLEAN ===== */
+.dashboard {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 260px;
+    padding: 20px;
+    background: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(8px);
+    border-radius: 0 14px 14px 0;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.6);
+    transition: transform 0.35s ease;
+    z-index: 10;
+}
+
+/* oculto */
+.dashboard:not(.open) {
+    transform: translate(-240px, -50%);
+}
+
+.dashboard h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* inputs de apuesta */
+.dashboard label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.dashboard input {
+    width: 80px;
+    padding: 6px;
+    border-radius: 6px;
+    border: none;
+    text-align: right;
+    font-size: 14px;
+}
+
+/* botones del dashboard */
+.dashboard button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    background: #2e7d32;
+    color: white;
+}
+
+.dashboard button:last-of-type {
+    background: #555;
+}
+
+/* botón flotante */
+.toggle-btn {
+    position: fixed;
+    left: 28px;
+    top: 18%;              /* ⬅ más arriba que el panel */
+    transform: translateY(-50%);
+    padding: 10px 14px;
+    border-radius: 20px;
+    background: #111;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    z-index: 11;
+}
+
+/* ===== CONTENEDOR DE LA CARRERA ===== */
+.race-container {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 20px;
+    background: rgba(0,0,0,0.75);
+    border-radius: 14px;
+    position: relative;
+}
+
+.race-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* ===== CARRILES ===== */
+.lane {
+    position: relative;
+    height: 70px;
+    margin: 14px 0;
+    background: linear-gradient(#8d6e63, #5d4037);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* líneas separadoras tipo pista */
+.lane::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: rgba(255,255,255,0.2);
+}
+
+/* ===== CABALLOS ===== */
+.horse {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 60px;
+    pointer-events: none;
+}
+
+/* ===== META ===== */
+.finish-line {
+    position: absolute;
+    right: 30px;
+    top: 90px;
+    bottom: 25px;
+    width: 12px;
+    background: repeating-linear-gradient(
+        45deg,
+        #fff,
+        #fff 10px,
+        #000 10px,
+        #000 20px
+    );
+    border-radius: 3px;
+}
+
+/* ===== POPUP RESULTADOS ===== */
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+}
+
+.popup-content {
+    background: #1f1f1f;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 280px;
+}
+
+.popup-content h2 {
+    margin-top: 0;
+}
+
+.popup-content button {
+    margin-top: 15px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* oculto */
+.hidden {
+    display: none;
+}
+
+.dashboard.open + .toggle-btn {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-50%) translateX(-20px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* ===== BOTÓN CERRAR DASHBOARD (MINIMAL REAL) ===== */
+.dashboard .close-btn {
+    all: unset;                 /* 🔥 elimina TODO estilo heredado */
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.dashboard .close-btn:hover {
+    color: white;
+}
+
+/* info de premios */
+.payout-info {
+    margin: 15px auto 0;
+    max-width: 1000px;
+    background: rgba(0,0,0,0.65);
+    border-radius: 10px;
+    padding: 10px 15px;
+    text-align: center;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.payout-info span {
+    white-space: nowrap;
+}
+
